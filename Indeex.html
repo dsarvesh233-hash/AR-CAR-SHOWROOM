@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exotic Car AR Showroom</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #000000 100%);
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center p-6">
+
+    <header class="text-center mb-12 mt-10">
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tighter mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
+            Augmented Reality Showroom
+        </h1>
+        <p class="text-gray-400 max-w-2xl mx-auto">
+            Scan with your mobile device to launch the immersive 3D and AR environments. (Requires HTTPS hosting).
+        </p>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl">
+        
+        <div class="glass-card rounded-2xl p-8 flex flex-col items-center text-center relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-600 to-orange-500"></div>
+            <h2 class="text-2xl font-bold mb-1 uppercase tracking-widest">Dodge Challenger</h2>
+            <p class="text-gray-500 mb-6 text-sm">V8 Muscle</p>
+            <div class="bg-white p-3 rounded-xl shadow-lg mb-6">
+                <img id="qr-challenger" alt="QR Code" class="w-40 h-40 object-contain">
+            </div>
+            <a href="challenger.html" class="mt-auto px-6 py-2 border border-white/50 rounded-full hover:bg-white hover:text-black transition font-semibold text-sm">View on Desktop</a>
+        </div>
+
+        <div class="glass-card rounded-2xl p-8 flex flex-col items-center text-center relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-teal-400 to-blue-500"></div>
+            <h2 class="text-2xl font-bold mb-1 uppercase tracking-widest">Pagani Huayra R</h2>
+            <p class="text-gray-500 mb-6 text-sm">Italian V12</p>
+            <div class="bg-white p-3 rounded-xl shadow-lg mb-6">
+                <img id="qr-pagani" alt="QR Code" class="w-40 h-40 object-contain">
+            </div>
+            <a href="pagani.html" class="mt-auto px-6 py-2 border border-white/50 rounded-full hover:bg-white hover:text-black transition font-semibold text-sm">View on Desktop</a>
+        </div>
+
+        <div class="glass-card rounded-2xl p-8 flex flex-col items-center text-center relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-yellow-500"></div>
+            <h2 class="text-2xl font-bold mb-1 uppercase tracking-widest">Ferrari F8 Tributo</h2>
+            <p class="text-gray-500 mb-6 text-sm">Maranello Engineering</p>
+            <div class="bg-white p-3 rounded-xl shadow-lg mb-6">
+                <img id="qr-ferrari" alt="QR Code" class="w-40 h-40 object-contain">
+            </div>
+            <a href="ferrari.html" class="mt-auto px-6 py-2 border border-white/50 rounded-full hover:bg-white hover:text-black transition font-semibold text-sm">View on Desktop</a>
+        </div>
+
+    </div>
+
+    <script>
+        // Automatically grabs your live URL (e.g., Netlify) and builds the QR codes
+        const baseUrl = window.location.href.replace('index.html', '');
+        
+        document.getElementById('qr-challenger').src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(baseUrl + 'challenger.html')}`;
+        document.getElementById('qr-pagani').src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(baseUrl + 'pagani.html')}`;
+        document.getElementById('qr-ferrari').src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(baseUrl + 'ferrari.html')}`;
+    </script>
+</body>
+</html>
