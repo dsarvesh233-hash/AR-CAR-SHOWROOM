@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Challenger AR</title>
+    <title>Ferrari AR</title>
     <style>
         body { margin: 0; overflow: hidden; background-color: #121212; font-family: sans-serif; }
         #ui-container { position: absolute; bottom: 80px; left: 50%; transform: translateX(-50%); display: flex; gap: 20px; z-index: 10; background: rgba(0, 0, 0, 0.6); padding: 15px 30px; border-radius: 12px; }
@@ -54,7 +54,7 @@
 
         const loader = new GLTFLoader();
         let carModel;
-        loader.load('dodge_challenger.glb', (gltf) => {
+        loader.load('2020_ferrari_f8_tributo copy.glb', (gltf) => {
             document.getElementById('loading-text').innerText = "";
             carModel = gltf.scene;
             carModel.scale.setScalar(0.65);
@@ -95,10 +95,10 @@
         });
     </script>
     <script>
-        const audioSource = '760153__sketchydog__v8-dodge-ram-1500-engine-starting-idling-then-driving-for-around-130-minutes.mp3'; 
+        const audioSource = '18771__djbono__ferrari-f456.mp3'; 
         const carAudio = new Audio(audioSource);
         let currentInterval;
-        const audioSegments = { idle: { start: 23.0, end: 28.0 }, accelerate: { start: 26.0, end: 34.0 }, flyby: { start: 63.0, end: 73.0 } };
+        const audioSegments = { idle: { start: 53.0, end: 58.0 }, accelerate: { start: 66.0, end: 73.0 }, flyby: { start: 21.0, end: 30.0 } };
         window.playSound = function(type) {
             clearInterval(currentInterval);
             const segment = audioSegments[type];
